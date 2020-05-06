@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".login.LoginFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#FAFAFA">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="140dp"
+            android:text="Iniciar de sesión"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Correo electónico o nombre de usuario"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <EditText
+            android:id="@+id/Usuario"
+            android:layout_width="333dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginStart="20dp"
+            android:inputType="text"
+            android:background="@drawable/edittext"
+            android:paddingStart="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="190dp"
+            android:layout_marginStart="20dp"
+            android:text="Contraseña"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout_password2"
+            android:layout_width="340dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="215dp"
+            app:passwordToggleDrawable="@drawable/show_password_selector"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:layout_width="333dp"
+                android:layout_height="53dp"
+                android:background="@drawable/edittext"
+                android:ems="15"
+                android:inputType="textPassword"
+                android:paddingStart="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="333dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="320dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/button"
+            android:text="Iniciar Sesion"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/registrarse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="440dp"
+            android:layout_centerHorizontal="true"
+            android:text="Registrarse"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:textColor="#000000" />
+    </RelativeLayout>
+
+</RelativeLayout>
