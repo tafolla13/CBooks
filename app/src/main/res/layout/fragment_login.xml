@@ -7,7 +7,6 @@
     tools:context=".login.LoginFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -24,7 +23,8 @@
             android:text="Iniciar de sesión"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:layout_gravity="center|left"/>
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -47,10 +47,11 @@
 
         <EditText
             android:id="@+id/Usuario"
-            android:layout_width="333dp"
+            android:layout_width="380dp"
             android:layout_height="53dp"
             android:layout_marginTop="130dp"
             android:layout_marginStart="20dp"
+            android:layout_centerHorizontal="true"
             android:inputType="text"
             android:background="@drawable/edittext"
             android:paddingStart="10dp" />
@@ -66,21 +67,22 @@
             android:textColor="#000000"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_input_layout_password2"
-            android:layout_width="340dp"
-            android:layout_height="80dp"
+            android:id="@+id/password_textField"
+            android:layout_width="377dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="215dp"
+            android:layout_marginTop="230dp"
             app:passwordToggleDrawable="@drawable/show_password_selector"
             app:passwordToggleEnabled="true">
 
             <EditText
-                android:layout_width="333dp"
+                android:id="@+id/password"
+                android:layout_width="375dp"
                 android:layout_height="53dp"
                 android:background="@drawable/edittext"
                 android:ems="15"
                 android:inputType="textPassword"
-                android:paddingStart="10dp"/>
+                android:paddingStart="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -91,7 +93,8 @@
             android:layout_marginStart="20dp"
             android:background="@drawable/button"
             android:text="Iniciar Sesion"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:id="@+id/registrarse"
@@ -103,6 +106,7 @@
             android:textStyle="bold"
             android:textSize="24dp"
             android:textColor="#000000" />
+
     </RelativeLayout>
 
 </RelativeLayout>
