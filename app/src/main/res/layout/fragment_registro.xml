@@ -6,10 +6,46 @@
     tools:context=".registro.RegistroFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="40sp"
-        android:text="@string/hello_blank_fragment" />
+
+    <Button
+        android:id="@+id/Registrarse"
+        android:layout_width="333dp"
+        android:layout_height="53dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="230dp"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:layout_marginTop="420dp" />
+    <Button
+        android:id="@+id/loginFacebook"
+        android:layout_width="333dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="490dp"
+        android:text="Facebook"
+        android:textColor="#FFFAFA"
+        android:paddingEnd="20dp"
+        android:textSize="24dp"
+        android:background="@drawable/facebook_button"
+        android:layout_centerHorizontal="true"
+        android:drawableStart="@drawable/facebook_icon"
+        android:paddingStart="20dp"/>
+    <Button
+        android:id="@+id/loginGooogle"
+        android:layout_width="333dp"
+        android:layout_height="53dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="590dp"
+        android:text="Google"
+        android:paddingEnd="20dp"
+        android:textSize="24sp"
+        android:drawableStart="@drawable/google_icon"
+        android:paddingStart="20dp"
+        android:background="@drawable/google_button" />
+
 
 </RelativeLayout>

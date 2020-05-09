@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "57656615502",
+    "firebase_url": "https://cbooks-eade4.firebaseio.com",
+    "project_id": "cbooks-eade4",
+    "storage_bucket": "cbooks-eade4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57656615502:android:38b3d8b8e37b6299cdd91f",
+        "android_client_info": {
+          "package_name": "com.example.cbooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57656615502-tafd3f303ssdvvg7gkpfu2skrqupu69q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cbooks",
+            "certificate_hash": "840f956ea16b28e165bab5bc8a17bc55b8cb7ff3"
+          }
+        },
+        {
+          "client_id": "57656615502-q0375125skp1e87tqe4svl2juh11p054.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbwRmfJ9LYdbIwbk7Og1FMdCYDEcrwpKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57656615502-q0375125skp1e87tqe4svl2juh11p054.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

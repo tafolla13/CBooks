@@ -73,7 +73,7 @@ class LoginFragment : Fragment() {
         Registro!!.setOnClickListener {
             val i = Intent(activity,RegistroActivity::class.java)
             startActivity(i)
-            activity!!.finish()
+            //activity!!.finish()
         }
     }
 }
