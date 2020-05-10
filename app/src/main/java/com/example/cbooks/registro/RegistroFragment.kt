@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 
 import com.example.cbooks.R
+import com.example.cbooks.home.HomeActivity
 import com.example.cbooks.utils.Models
 import com.facebook.LoginStatusCallback
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -28,12 +29,13 @@ import com.google.firebase.auth.GoogleAuthProvider
  */
 class RegistroFragment : Fragment(), View.OnClickListener {
     private var LoginGoogle : Button? = null
+    private var LoginFacebook : Button? = null
     private lateinit var progress : ProgressBar
 
     private lateinit var rootView : View
 
     private val RC_SIGN_IN = 1
-
+    private val TAG = "sdsa"
     private lateinit var auth : FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var googleSignInOptions: GoogleSignInOptions
@@ -51,6 +53,14 @@ class RegistroFragment : Fragment(), View.OnClickListener {
         return rootView
     }
 
+    override fun onStart() {
+        super.onStart()
+        if(auth.currentUser != null){
+            startActivity(Intent(activity, HomeActivity::class.java))
+            activity!!.finish()
+        }
+    }
+
     private fun GoogleInstances(){
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -64,12 +74,14 @@ class RegistroFragment : Fragment(), View.OnClickListener {
     }
 
     private fun Instances(){
+        LoginFacebook = rootView.findViewById(R.id.loginFacebook)
         LoginGoogle = rootView.findViewById(R.id.loginGooogle)
         progress = rootView.findViewById(R.id.progress_bar)
     }
 
     private fun actions(){
         LoginGoogle!!.setOnClickListener(this)
+        LoginFacebook!!.setOnClickListener(this)
     }
 
     private fun signInGoogle(){
@@ -87,7 +99,7 @@ class RegistroFragment : Fragment(), View.OnClickListener {
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthGoogle(account!!)
             }catch (e: ApiException){
-
+                Log.w(TAG, "Conexion con Google fallida")
             }
         }
     }
@@ -96,6 +108,10 @@ class RegistroFragment : Fragment(), View.OnClickListener {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         auth.signInWithCredential(credential).addOnCompleteListener(){task ->
         }
+    }
+
+    private fun firebaseAuthWithFacebook(){
+
     }
 
     override fun onClick(view: View?){
