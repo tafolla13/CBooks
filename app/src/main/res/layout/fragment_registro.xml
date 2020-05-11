@@ -60,8 +60,8 @@
 
     <ProgressBar
         android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
         android:layout_centerHorizontal="true"
         android:visibility="invisible"
         android:layout_marginTop="429dp" />
@@ -69,25 +69,25 @@
         android:id="@+id/loginFacebook"
         android:layout_width="333dp"
         android:layout_height="53dp"
-        android:layout_marginTop="490dp"
+        android:layout_marginTop="470dp"
         android:text="Facebook"
         android:textColor="#FFFAFA"
         android:paddingEnd="20dp"
         android:textSize="24dp"
         android:background="@drawable/facebook_button"
         android:layout_centerHorizontal="true"
-        android:drawableStart="@drawable/facebook_icon"
+        android:drawableStart="@mipmap/facebook_icon"
         android:paddingStart="20dp"/>
     <Button
         android:id="@+id/loginGooogle"
         android:layout_width="333dp"
         android:layout_height="53dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="590dp"
+        android:layout_marginTop="550dp"
         android:text="Google"
         android:paddingEnd="20dp"
         android:textSize="24sp"
-        android:drawableStart="@drawable/google_icon"
+        android:drawableStart="@mipmap/google_icon"
         android:paddingStart="20dp"
         android:background="@drawable/google_button" />
 

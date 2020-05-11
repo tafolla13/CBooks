@@ -66,24 +66,24 @@
             android:textStyle="bold"
             android:textColor="#000000"/>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <!--<com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_textField"
             android:layout_width="377dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="230dp"
             app:passwordToggleDrawable="@drawable/show_password_selector"
-            app:passwordToggleEnabled="true">
-
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="375dp"
-                android:layout_height="53dp"
-                android:background="@drawable/edittext"
-                android:ems="15"
-                android:inputType="textPassword"
-                android:paddingStart="10dp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            app:passwordToggleEnabled="true"> -->
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="380dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="230dp"
+            android:layout_marginStart="20dp"
+            android:layout_centerHorizontal="true"
+            android:inputType="textPassword"
+            android:background="@drawable/edittext"
+            android:paddingStart="10dp" />
 
         <Button
             android:id="@+id/login"

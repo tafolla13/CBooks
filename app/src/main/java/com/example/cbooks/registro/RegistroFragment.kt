@@ -11,25 +11,30 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.view.isVisible
+import bolts.Task
 
 import com.example.cbooks.R
 import com.example.cbooks.home.HomeActivity
 import com.example.cbooks.utils.Models
-import com.facebook.LoginStatusCallback
+import com.facebook.*
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.*
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class RegistroFragment : Fragment(), View.OnClickListener {
-    private var LoginGoogle : Button? = null
     private var LoginFacebook : Button? = null
+    private var LoginGoogle : Button? = null
     private lateinit var progress : ProgressBar
 
     private lateinit var rootView : View
@@ -40,6 +45,7 @@ class RegistroFragment : Fragment(), View.OnClickListener {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var googleSignInOptions: GoogleSignInOptions
     private lateinit var model: Models
+    private var mCallbackManager: CallbackManager? = null
 
 
     override fun onCreateView(
@@ -50,6 +56,7 @@ class RegistroFragment : Fragment(), View.OnClickListener {
         FirebaseInstance()
         Instances()
         actions()
+        loginManager()
         return rootView
     }
 
@@ -80,8 +87,9 @@ class RegistroFragment : Fragment(), View.OnClickListener {
     }
 
     private fun actions(){
-        LoginGoogle!!.setOnClickListener(this)
         LoginFacebook!!.setOnClickListener(this)
+        LoginGoogle!!.setOnClickListener(this)
+
     }
 
     private fun signInGoogle(){
@@ -92,6 +100,7 @@ class RegistroFragment : Fragment(), View.OnClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        mCallbackManager!!.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode == RC_SIGN_IN){
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -110,14 +119,52 @@ class RegistroFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun firebaseAuthWithFacebook(){
+    private fun firebaseAuthWithFacebook(token : AccessToken){
+        Log.e(TAG, "handleFacebookAccessToken: "+ token)
+        val crendential = FacebookAuthProvider.getCredential(token.token)
+        auth.signInWithCredential(crendential)
+            .addOnCompleteListener(activity as RegistroActivity, object : OnCompleteListener<AuthResult>{
+                override fun onComplete(task: com.google.android.gms.tasks.Task<AuthResult>) {
+                    Log.e(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
+                    if(!task.isSuccessful){
+                        Toast.makeText(activity, "Failed", Toast.LENGTH_SHORT).show();
 
+                    }else{
+                        Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            })
+    }
+
+    fun loginManager(){
+        mCallbackManager = CallbackManager.Factory.create()
+        LoginManager.getInstance().registerCallback(mCallbackManager,
+            object: FacebookCallback<LoginResult>{
+                override fun onSuccess(result: LoginResult?) {
+                    Log.e(TAG, "Succesfull Facebook Sign In")
+                    firebaseAuthWithFacebook(result?.accessToken!!)
+                }
+
+                override fun onCancel() {
+                    Log.e(TAG, "Cancelled Facebook Sign In")
+                }
+
+                override fun onError(error: FacebookException?) {
+                    Log.e(TAG, "Facebook sign in error : " + error.toString())
+                }
+            })
     }
 
     override fun onClick(view: View?){
         when(view?.id){
             R.id.loginGooogle -> {
                 signInGoogle()
+            }
+            R.id.loginFacebook -> {
+                LoginManager.getInstance().logInWithReadPermissions(
+                    this,
+                    Arrays.asList("user_photos", "email", "user_birthday", "public_profile")
+                )
             }
         }
     }
