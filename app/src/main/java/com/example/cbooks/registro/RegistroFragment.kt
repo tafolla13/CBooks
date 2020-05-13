@@ -1,6 +1,8 @@
 package com.example.cbooks.registro
 
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -19,6 +21,8 @@ import com.example.cbooks.utils.Models
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -27,6 +31,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.*
+import java.security.MessageDigest
 import java.util.*
 
 /**
@@ -40,7 +45,7 @@ class RegistroFragment : Fragment(), View.OnClickListener {
     private lateinit var rootView : View
 
     private val RC_SIGN_IN = 1
-    private val TAG = "sdsa"
+    private val TAG = "FacebookLogin"
     private lateinit var auth : FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var googleSignInOptions: GoogleSignInOptions
@@ -163,9 +168,25 @@ class RegistroFragment : Fragment(), View.OnClickListener {
             R.id.loginFacebook -> {
                 LoginManager.getInstance().logInWithReadPermissions(
                     this,
-                    Arrays.asList("user_photos", "email", "user_birthday", "public_profile")
+                    Arrays.asList("user_photos", "email", "public_profile")
                 )
             }
         }
     }
+
+    /*fun generateSSHKey(context: Context){
+        try {
+            val info = context.packageManager.getPackageInfo(context.packageName, PackageManager.GET_SIGNATURES)
+            for (signature in info.signatures) {
+                val md = MessageDigest.getInstance("SHA")
+                md.update(signature.toByteArray())
+                val hashKey = String(Base64.getDecoder().decode(md.digest()))
+                Log.i("AppLog", "key:$hashKey=")
+            }
+        } catch (e: Exception) {
+            Log.e("AppLog", "error:", e)
+        }
+
+    }*/
+
 }
