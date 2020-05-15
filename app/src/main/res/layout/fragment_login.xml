@@ -91,10 +91,10 @@
             android:layout_height="53dp"
             android:layout_marginTop="320dp"
             android:layout_marginStart="20dp"
-            android:background="@drawable/button"
+            android:background="@drawable/button_bg"
             android:text="Iniciar Sesion"
             android:textStyle="bold"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:id="@+id/registrarse"
@@ -102,10 +102,11 @@
             android:layout_height="53dp"
             android:layout_marginTop="440dp"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/button"
+            android:background="@drawable/button_bg"
             android:text="Registrarse"
             android:textSize="24dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@drawable/button_text_color" />
 
         <!--<TextView
             android:id="@+id/registrarse"
